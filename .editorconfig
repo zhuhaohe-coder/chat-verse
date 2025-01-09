@@ -1,0 +1,30 @@
+# EditorConfig 配置文件
+# http://editorconfig.org
+
+# 表明这是最顶层的配置文件
+root = true
+
+# 对所有文件生效
+[*]
+# 字符集使用 utf-8
+charset = utf-8
+# 换行符使用 lf
+end_of_line = lf
+# 缩进使用空格
+indent_style = space
+# 缩进大小为 2
+indent_size = 2
+# 文件末尾插入空行
+insert_final_newline = true
+# 删除行末空格
+trim_trailing_whitespace = true
+
+# 对 Markdown 文件的特殊配置
+[*.md]
+# Markdown 文件末尾空格可能是有意义的，不要删除
+trim_trailing_whitespace = false
+
+# 对 package.json 和 package-lock.json 的特殊配置
+[{package.json,package-lock.json}]
+# 使用 2 空格缩进
+indent_size = 2

@@ -1,0 +1,20 @@
+{
+  /* 继承根目录的基础 TypeScript 配置 */
+  "extends": "../../tsconfig.base.json",
+
+  /* Web 应用特定的编译选项 */
+  "compilerOptions": {
+    "composite": true,              /* 启用项目引用 */
+    "jsx": "react-jsx",            /* React JSX 支持 */
+    "baseUrl": ".",                /* 基础目录 */
+    "paths": {
+      "@/*": ["src/*"]            /* 路径别名 */
+    }
+  },
+
+  /* 包含的文件 */
+  "include": [
+    "src",
+    "vite.config.ts"
+  ]
+}
