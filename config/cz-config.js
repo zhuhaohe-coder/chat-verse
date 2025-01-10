@@ -17,6 +17,7 @@ module.exports = {
   // 步骤
   messages: {
     type: '请选择提交类型:',
+    project: '请选择项目类型(可选):',
     customScope: '请输入修改范围(可选):',
     subject: '请简要描述提交(必填):',
     body: '请输入详细描述(可选):',
@@ -30,7 +31,14 @@ module.exports = {
   // subject文字长度默认是72
   subjectLimit: 100,
 
-  // 范围列表，如果你不设置，会自动提示输入
+  // 项目类型选择
+  projects: [
+    { value: 'frontend', name: 'frontend: 前端项目更改' },
+    { value: 'backend', name: 'backend:  后端项目更改' },
+    { value: 'common', name: 'common:  公共库更改' },
+  ],
+
+  // 范围列表
   scopes: [
     ['components', '组件相关'],
     ['hooks', 'hook 相关'],
@@ -39,7 +47,6 @@ module.exports = {
     ['deps', '项目依赖'],
     ['auth', '对 auth 修改'],
     ['other', '其他修改'],
-    // 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true
     ['custom', '以上都不是？我要自定义'],
   ].map(([value, description]) => ({
     value,
