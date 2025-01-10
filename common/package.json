@@ -1,0 +1,14 @@
+{
+  "name": "@chatverse/common",
+  "type": "module",
+  "private": true,
+  "description": "Common utilities and shared code for the project.",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
