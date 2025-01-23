@@ -1,14 +1,27 @@
 {
   "name": "@chatverse/common",
-  "type": "module",
+  "version": "1.0.0",
   "private": true,
   "description": "Common utilities and shared code for the project.",
-  "version": "1.0.0",
-  "main": "index.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "scripts": {
-    "build": "tsc"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.3.5"
+  }
 }
