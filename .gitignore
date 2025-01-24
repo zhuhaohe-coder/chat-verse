@@ -33,3 +33,6 @@ pnpm-debug.log*
 
 # NestJS
 dist/
+
+# request
+*.http

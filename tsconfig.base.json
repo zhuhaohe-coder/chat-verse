@@ -20,6 +20,7 @@
     "strictNullChecks": true, // 严格的空值检查
     "noUnusedLocals": true, // 报告未使用的局部变量
     "noUnusedParameters": true, // 报告未使用的参数
+    "strictPropertyInitialization": false, // 允许未初始化的属性
     /* 其他选项 */
     "experimentalDecorators": true, // 启用装饰器
     "emitDecoratorMetadata": true, // 为装饰器生成元数据

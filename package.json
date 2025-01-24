@@ -12,7 +12,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "prepare": "husky install",
     "commitlint": "commitlint --edit",
-    "commit": "cz"
+    "commit": "cz",
+    "build:common": "pnpm --filter common build",
+    "dev:common": "pnpm --filter common dev"
   },
   "keywords": [],
   "author": "",
