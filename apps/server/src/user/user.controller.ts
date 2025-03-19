@@ -1,9 +1,10 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { UserService } from './user.service';
-import { RegisterUserDto } from '@chatverse/common';
+import { LoginUserDto, RegisterUserDto } from '@chatverse/common';
 import { generateRandomCode } from '@/utils';
 import { EmailService } from '@/email/email.service';
 import { RedisService } from '@/redis/redis.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Controller('user')
 export class UserController {
@@ -11,6 +12,7 @@ export class UserController {
     private readonly userService: UserService,
     private readonly emailService: EmailService,
     private readonly redisService: RedisService,
+    private readonly jwtService: JwtService,
   ) {}
 
   @Post('register')
@@ -33,5 +35,18 @@ export class UserController {
       html: `<p>您的验证码是: <strong>${code}</strong></p>`,
     });
     return '发送成功';
+  }
+
+  @Post('login')
+  async login(@Body() loginUser: LoginUserDto) {
+    const user = await this.userService.login(loginUser);
+    const token = this.jwtService.sign({
+      userId: user.id,
+      username: user.username,
+    });
+    return {
+      user,
+      token,
+    };
   }
 }

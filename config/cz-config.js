@@ -14,6 +14,9 @@ module.exports = {
     { value: 'ci', name: 'ci:       🎡 CI相关变更' },
   ],
 
+  // 启用项目选择
+  useProjectScopes: true,
+
   // 步骤
   messages: {
     type: '请选择提交类型:',

@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { md5 } from '@/utils';
 import { RedisService } from '@/redis/redis.service';
-import { RegisterUserDto } from '@chatverse/common';
+import { LoginUserDto, RegisterUserDto } from '@chatverse/common';
 
 @Injectable()
 export class UserService {
@@ -72,5 +72,27 @@ export class UserService {
       this.logger.error(error);
       throw new HttpException('注册失败', HttpStatus.INTERNAL_SERVER_ERROR);
     }
+  }
+
+  // 登录
+  async login(user: LoginUserDto) {
+    const { username, password } = user;
+    const foundUser = await this.prisma.user.findUnique({
+      where: { username },
+    });
+    if (!foundUser) {
+      throw new HttpException('用户不存在', HttpStatus.BAD_REQUEST);
+    }
+
+    if (foundUser.password !== md5(password)) {
+      throw new HttpException('密码错误', HttpStatus.BAD_REQUEST);
+    }
+
+    return {
+      id: foundUser.id,
+      username: foundUser.username,
+      nickname: foundUser.nickname,
+      email: foundUser.email,
+    };
   }
 }
